@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slack Clone - using bootstrap</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+  <link rel="stylesheet" href="home.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+  
+</head>
+<body>
+  <div class="container-fluid w-100 p-0 m-0 h-auto">
+    <!-- Header -->
+    <header class="py-3 p-0 h-auto">
+      <nav class="navbar navbar-expand-lg" style="padding-left:4vw;">
+        <div class="container-fluid">
+          <a class="navbar-brand me-4" href="#">
+            <svg width="110" class="c-slacklogo--color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" shape-rendering="geometricPrecision"><title>Slack</title>
+              <path d="m75.663 47.477 2.929-6.846c3.207 2.375 7.39 3.632 11.574 3.632 3.068 0 5.02-1.187 5.02-3.003-.07-5.03-18.477-1.118-18.617-13.764-.07-6.427 5.648-11.387 13.737-11.387 4.81 0 9.622 1.188 13.038 3.913l-2.737 6.992c-3.143-2.021-7.025-3.43-10.72-3.43-2.51 0-4.184 1.187-4.184 2.725.07 4.96 18.618 2.235 18.827 14.322 0 6.567-5.579 11.178-13.528 11.178-5.856 0-11.225-1.397-15.34-4.332m116.629-9.325a8.498 8.498 0 0 1 -7.405 4.33c-4.698 0-8.506-3.816-8.506-8.523s3.808-8.523 8.506-8.523a8.498 8.498 0 0 1 7.405 4.33l8.143-4.52c-3.05-5.451-8.868-9.137-15.548-9.137-9.839 0-17.815 7.991-17.815 17.85 0 9.858 7.976 17.85 17.815 17.85 6.68 0 12.498-3.686 15.548-9.137zm-82.477 12.958h10.18v-49.86h-10.179zm95.761-49.86v49.86h10.18v-14.938l12.063 14.938h13.012l-15.34-17.746 14.224-16.559h-12.454l-11.505 13.767v-29.322zm-54.218 15.557v4.053c-1.673-2.795-5.787-4.751-10.11-4.751-8.925 0-15.967 7.895-15.967 17.815s7.042 17.885 15.967 17.885c4.323 0 8.437-1.956 10.11-4.751v4.052h10.18v-34.303zm0 21.414c-1.464 2.445-4.532 4.26-7.948 4.26-4.699 0-8.507-3.815-8.507-8.522s3.808-8.523 8.507-8.523c3.416 0 6.484 1.886 7.948 4.4z" fill='#fff'></path>
+              <path d="m21.902.148c-3.299 0-5.973 2.68-5.973 5.985a5.979 5.979 0 0 0 5.973 5.985h5.974v-5.985a5.98 5.98 0 0 0 -5.974-5.985m0 15.96h-15.929c-3.299 0-5.973 2.68-5.973 5.986 0 3.305 2.674 5.985 5.973 5.985h15.93c3.298 0 5.973-2.68 5.973-5.985 0-3.306-2.675-5.986-5.974-5.986" fill="#44BEDF"></path><path d="m59.734 22.094c0-3.306-2.675-5.986-5.974-5.986s-5.973 2.68-5.973 5.986v5.985h5.973a5.98 5.98 0 0 0 5.974-5.985m-15.929 0v-15.961a5.98 5.98 0 0 0 -5.974-5.985c-3.299 0-5.973 2.68-5.973 5.985v15.96c0 3.307 2.674 5.987 5.973 5.987a5.98 5.98 0 0 0 5.974-5.985" fill="#2EB67D"></path><path d="m37.831 60a5.98 5.98 0 0 0 5.974-5.985 5.98 5.98 0 0 0 -5.974-5.985h-5.973v5.985c0 3.305 2.674 5.985 5.973 5.985m0-15.96h15.93c3.298 0 5.973-2.68 5.973-5.986a5.98 5.98 0 0 0 -5.974-5.985h-15.929c-3.299 0-5.973 2.68-5.973 5.985a5.979 5.979 0 0 0 5.973 5.985" fill="#ECB22E"></path><g><path d="m0 38.054a5.979 5.979 0 0 0 5.973 5.985 5.98 5.98 0 0 0 5.974-5.985v-5.985h-5.974c-3.299 0-5.973 2.68-5.973 5.985m15.929 0v15.96c0 3.306 2.674 5.986 5.973 5.986a5.98 5.98 0 0 0 5.974-5.985v-15.961a5.979 5.979 0 0 0 -5.974-5.985c-3.299 0-5.973 2.68-5.973 5.985" fill="#E01E5A"></path></g></svg>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle fw-bold me-3 text-white"  href="#"
+                  id="featuresDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Features
+                </a>
+                <ul class="dropdown-menu w-auto h-auto" aria-labelledby="featuresDropdown">
+                  <div class="drop-contain-list-items d-flex px-3">
+                    <!-- First -->
+                    <li class="">
+                      <p role="heading " class="p-3 text-uppercase fw-bold">Collaboration</p>
+                      <div class="subheading " style="line-height:1rem;">
+                        <div class="sub1 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line " href="#">Channels</a>
+                          <a class="dropdown-item text-secondary" href="#">Organise teams and work</a>
+                        </div>
+                        <div class="sub2 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Slack Connect</a>
+                          <a class="dropdown-item text-secondary" href="#">Work with external partners</a>
+                        </div>
+                        <div class="sub3 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Messaging</a>
+                          <a class="dropdown-item text-secondary" href="#">Chat with your team</a>
+                        </div>
+                        <div class="sub4 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Huddles</a>
+                          <a class="dropdown-item text-secondary" href="#">Meet using audio and video</a>
+                        </div>
+                        <div class="sub5 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Clips</a>
+                          <a class="dropdown-item text-secondary" href="#">Record and share updates</a>
+                        </div>
+  
+                      </div>
+                    </li>
+                    <!-- Second -->
+                    <li class="">
+                      <p role="heading" class="p-3 text-uppercase fw-bold">automation</p>
+                      <div class="subheading" style="line-height:1rem;">
+                        <div class="sub1 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Workflow Builder</a>
+                          <a class="dropdown-item text-secondary" href="#">Automate everyday tasks</a>
+                        </div>
+                        <div class="sub2 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Apps & integrations</a>
+                          <a class="dropdown-item text-secondary" href="#">Bring your tools to Slack</a>
+                        </div>
+                        <p role="heading" class="p-3 pb-2 text-uppercase fw-bold">knowledge</p>
+                        <div class="sub3 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Search</a>
+                          <a class="dropdown-item text-secondary" href="#">Seek shared knowledge</a>
+                        </div>
+                        <div class="sub4 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Canvas</a>
+                          <a class="dropdown-item text-secondary" href="#">Create rich, flexible docs</a>
+                        </div>
+                        <div class="sub5 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">File sharing</a>
+                          <a class="dropdown-item text-secondary" href="#">Bring files into the flow of work</a>
+                        </div>
+  
+                      </div>
+                    </li>
+                    <!-- Third -->
+                    <li class="">
+                      <p role="heading" class="p-3 text-uppercase fw-bold">enterprise platform</p>
+                      <div class="subheading" style="line-height:1rem;">
+                        <div class="sub1 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Security</a>
+                          <a class="dropdown-item text-secondary" href="#">Protect data, ensure compliance</a>
+                        </div>
+                        <div class="sub2 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Enterprise Key Management</a>
+                          <a class="dropdown-item text-secondary" href="#">Monitor and revoke access</a>
+                        </div>
+                        <div class="sub3 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Slack Atlas</a>
+                          <a class="dropdown-item text-secondary" href="#">Discover rich profiles and org charts</a>
+                        </div>
+                      </div>
+                    </li>
+                    <!-- Fourth -->
+                    <!-- Image card -->
+                    <li>
+                      <p role="heading" class="pt-3 text-uppercase fw-bold">featured</p>
+                      <div class="card pb-4" style="width: 14rem;border: none; border-bottom: 1px solid rgba(0,0,0,.15); ">
+                        <img src="/images/blackgirl.png" class="card-img-top" alt="...">
+                        <div class="card-body p-0 mt-2">
+                          <p class="card-text fw-semibold ">Power productivity with all-new innovations in Slack</p>
+                          <a class="fs-6 fw-bold c-pointer d-flex hover-line justify-content-between text-decoration-none" style="color:#1264a3;">
+                            Read announcement 
+                            <i class=" ri-arrow-right-line fs-5"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class='mt-4 c-pointer' style="font-weight:500;">
+                        <p class="blue-under-line">What is Slack?</p>
+                        <p class="blue-under-line">Slack vs email</p>
+                        <p class="blue-under-line">Accessibility</p>
+                      </div>
+                    </li>
+                  </div>
+                  <div class="p-4 pb-1 fw-bold c-pointer" style="color:#1264a3;">
+                    <span class="blue-under-line">View demo</span>
+                    <span class="mx-3 blue-under-line">Download Slack <img src="/images/download.svg" style="margin-top:-4.5px;margin-right:4px;"></span>
+                  </div>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle fw-bold me-3 text-white"  href="#"
+                  id="solutionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Solutions
+                </a>
+                <ul class="dropdown-menu h-auto w-auto" aria-labelledby="featuresDropdown">
+                  <div class="drop-contain-list-items d-flex px-3">
+                    <!-- First -->
+                    <li class="">
+                      <p role="heading" class="p-3 text-uppercase fw-bold">By department</p>
+                      <div class="subheading" style="line-height:1rem;">
+                        <div class="sub1 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Engineering</a>
+                        </div>
+                        <div class="sub2 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">IT</a>
+                        </div>
+                        <div class="sub3 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Customer Service</a>
+                        </div>
+                        <div class="sub4 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Sales</a>
+                        </div>
+                        <div class="sub5 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Project Management</a>
+                        </div>
+                        <div class="sub5 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Marketing</a>
+                        </div>
+                        <div class="sub5 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Human Resources</a>
+                        </div>
+                        <div class="sub5 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Security</a>
+                        </div>
+  
+                      </div>
+                    </li>
+                    <!-- Second -->
+                    <li class="">
+                      <p role="heading" class="p-3 text-uppercase fw-bold">by industry</p>
+                      <div class="subheading" style="line-height:1rem;">
+                        <div class="sub1 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#"><i class="ri-bard-fill" style="color:#541554;"></i>Technology</a>
+                        </div>
+                        <div class="sub2 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Media</a>
+                        </div>
+                        <div class="sub3 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Small business</a>
+                        </div>
+                        <div class="sub4 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Financial services</a>
+                        </div>
+                        <div class="sub5 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Retail</a>
+                        </div>
+                        <div class="sub5 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Public sector</a>
+                        </div>
+                        <div class="sub5 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Education</a>
+                        </div>
+                        <div class="sub5 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Health and life sciences</a>
+                        </div>
+  
+                      </div>
+                    </li>
+                    
+                    <!-- Third -->
+                    <!-- Image card -->
+                    <li>
+                      <p role="heading" class="pt-3 text-uppercase fw-bold">featured</p>
+                      <div class="card pb-4" style="width: 14rem;border: none; border-bottom: 1px solid rgba(0,0,0,.15); ">
+                        <img src="/images/laptop.png" class="card-img-top" alt="...">
+                        <div class="card-body p-0 mt-2">
+                          <p class="card-text fw-semibold">How OpenAI connects customers and expands ChatGPT with Slack</p>
+                          <a class="fs-6 fw-bold c-pointer d-flex justify-content-between text-decoration-none hover-line" style="color:#1264a3;">
+                            Read story
+                            <i class=" ri-arrow-right-line fs-5"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class='mt-4 c-pointer' style="font-weight:500;">
+                        <p class="blue-under-line">Task management</p>
+                        <p class="blue-under-line">Scale </p>
+                        <p class="blue-under-line">Engagement</p>
+                        <p class="blue-under-line">Trust</p>
+                      </div>
+                    </li>
+                  </div>
+                  <div class="p-4 pb-1 fw-bold c-pointer" style="color:#1264a3;">
+                    <span class="blue-under-line">Watch demo</span>
+                    <span class="mx-3 blue-under-line">Download Slack <img src="/images/download.svg" style="margin-top:-4.5px;margin-right:4px;"></span>
+                  </div>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fw-bold text-white me-3" href="#">Enterprise</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle fw-bold me-3 text-white"  href="#"
+                  id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Resources
+                </a>
+                <ul class="dropdown-menu translate-move" aria-labelledby="resourcesDropdown">
+                  <div class="drop-contain-list-items d-flex px-3" >
+                    <!-- First -->
+                    <li class="">
+                      <div class="subheading " style="line-height:1rem;">
+                        <div class="sub1 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line " href="#">Channels</a>
+                        </div>
+                        <div class="sub2 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Slack Connect</a>
+                        </div>
+                        <div class="sub3 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Messaging</a>
+                        </div>
+                        <div class="sub4 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Huddles</a>
+                        </div>
+                        <div class="sub5 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Clips</a>
+                        </div>
+  
+                      </div>
+                    </li>
+                    <!-- Second -->
+                    <li class="">
+                      <div class="subheading" style="line-height:1rem;">
+                        <div class="sub1 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Workflow Builder</a>
+                        </div>
+                        <div class="sub2 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Apps & integrations</a>
+                        </div>
+                        <div class="sub3 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Search</a>
+                        </div>
+                        <div class="sub4 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Canvas</a>
+                        </div>
+                        <div class="sub5 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">File sharing</a>
+                        </div>
+  
+                      </div>
+                    </li>
+                    <!-- Third -->
+                    <li class="">
+                      <div class="subheading" style="line-height:1rem;">
+                        <div class="sub1 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Security</a>
+                        </div>
+                        <div class="sub2 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Enterprise Key Management</a>
+                        </div>
+                        <div class="sub3 my-3">
+                          <a class="dropdown-item fw-semibold blue-under-line" href="#">Slack Atlas</a>
+                        </div>
+                      </div>
+                    </li>
+                    <!-- Fourth -->
+                    <!-- Image card -->
+                    <li>
+                      <p role="heading" class="pt-3 text-uppercase fw-bold">featured</p>
+                      <div class="card pb-4" style="width: 14rem;border: none; border-bottom: 1px solid rgba(0,0,0,.15); ">
+                        <img src="/images/img1.png" class="card-img-top" alt="...">
+                        <div class="card-body p-0 mt-2">
+                          <p class="card-text fw-semibold ">Discover the future of AI at Dreamforce 2023!</p>
+                          <a class="fs-6 fw-bold c-pointer d-flex hover-line justify-content-between text-decoration-none" style="color:#1264a3;">
+                            Read announcement 
+                            <i class=" ri-arrow-right-line fs-5"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class='mt-4 c-pointer' style="font-weight:500;">
+                        <p class="blue-under-line">Help Centre</p>
+                        <p class="blue-under-line">Customer support</p>
+                      </div>
+                    </li>
+                  </div>
+                  <div class="p-4 pb-1 fw-bold c-pointer" style="color:#1264a3;">
+                    <span class="blue-under-line">Watch demo</span>
+                    <span class="mx-3 blue-under-line">Download Slack <img src="/images/download.svg" style="margin-top:-4.5px;margin-right:4px;"></span>
+                  </div>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fw-bold text-white" href="#">Pricing</a>
+              </li>
+            </ul>
+
+            <a class="d-flex sign-in text-white text-decoration-none" href="../Sign-In/sign-in.html" style="width:9.5rem;">
+              <i class="ri-search-line fs-5"><span class="ms-2 fs-6 fw-bold c-pointer">Sign In</span></i>
+            </a>
+
+            <div class="nav-btns text-end d-flex flex-wrap justify-content-between">
+              <button type="button" class="btn btn1 btn-outline-light  text-uppercase fw-bold" style="padding:.9vw 2vw;">
+                Talk to sales
+              </button>
+              <button type="button" class="btn btn2 btn-light ms-3 text-uppercase fw-semibold"
+                style="color: #541554;padding:.9vw 2vw;">
+                Try for free
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- navbar ends -->
+      
+      <div class="header-content container position-relative" style="padding-bottom: 6vw;">
+        <div class="row">
+          <div class="col-lg-6 mt-5">
+            <h1 class="text-light heading" style="font-size: 4rem; font-weight: 700">
+              Made for people. <h1 class="text-warning heading" style="font-size:4rem; font-weight:700;display:inline-block;">Built for productivity.</h1>
+            </h1>
+            <p class="text-light fs-5" style="font-weight: 500;">
+              Connect the right people, find anything that you need and automate
+              the rest. That's work in Slack, your productivity platform.
+            </p>
+            <div class="btns">
+              <button class="sign-btn btn btn-light px-5 py-3 text-uppercase me-2 my-1" style="color: #541554; font-weight: 700;">
+                Sign up with email address
+              </button>
+              <button class="google-btn text-uppercase btn text-light px-1 my-1" style="
+                    background: #4285f4;
+                    font-weight: 700;
+                    box-sizing: border-box;
+                  ">
+                <img class="bg-light p-2 me-1 rounded" width="42" height="44" src="/images/google.svg" /><span
+                  class="px-2">Sign up with google</span>
+              </button>
+            </div>
+            <p class="text-light fw-semibold fs-5 my-2">
+              Slack is free to try as long as you like
+            </p>
+          </div>
+      
+          <!-- Header video Element -->
+          <div class="col-lg-6 mt-5">
+            <div class="position-relative header-video">
+              <video title="Team discussing work in the Slack app" role="img" width="100%" data-js-id="hero" autoplay
+                loop="" muted="" playsinline=""
+                poster="https://a.slack-edge.com/ec3a92a/marketing/img/homepage/true-prospects/animations/static/ia4-hero-product-ui.IN.jpg">
+                <source
+                  src="https://a.slack-edge.com/ec3a92a/marketing/img/homepage/true-prospects/animations/mp4/ia4-hero-product-ui.IN.mp4"
+                  type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </header>
+    <!-- Header end -->
+    <!-- Main content Started -->
+    <main class="main h-auto w-100 pt-5 pb-5" style="background: #f4ede4">
+      <h6 class="text-center fs-6" style="font-weight: 700; color: black">
+        TRUSTED BY COMPANIES ALL OVER THE WORLD
+      </h6>
+      <div class="company-images d-flex align-items-center justify-content-center mt-5 flex-wrap mb-5">
+        <div class="f-img my-4">
+          <img alt="SEEK" height="40" width="102"
+            data-src="https://a.slack-edge.com/8719b/marketing/img/logos/company/_color/logo-seek.png"
+            data-srcset="https://a.slack-edge.com/8719b/marketing/img/logos/company/_color/logo-seek.png 1x, https://a.slack-edge.com/ce51938/marketing/img/logos/company/_color/logo-seek@2x.png 2x"
+            src="https://a.slack-edge.com/8719b/marketing/img/logos/company/_color/logo-seek.png" srcset="
+                https://a.slack-edge.com/8719b/marketing/img/logos/company/_color/logo-seek.png      1x,
+                https://a.slack-edge.com/ce51938/marketing/img/logos/company/_color/logo-seek@2x.png 2x
+              " />
+        </div>
+        <div class="s-img my-4">
+          <img alt="Xero" height="45" width="50"
+            data-src="https://a.slack-edge.com/8719b/marketing/img/logos/company/_color/logo-xero.png"
+            data-srcset="https://a.slack-edge.com/8719b/marketing/img/logos/company/_color/logo-xero.png 1x, https://a.slack-edge.com/ce51938/marketing/img/logos/company/_color/logo-xero@2x.png 2x"
+            src="https://a.slack-edge.com/8719b/marketing/img/logos/company/_color/logo-xero.png" srcset="
+                https://a.slack-edge.com/8719b/marketing/img/logos/company/_color/logo-xero.png      1x,
+                https://a.slack-edge.com/ce51938/marketing/img/logos/company/_color/logo-xero@2x.png 2x
+              " />
+        </div>
+        <div class="t-img my-4">
+          <img alt="REA Group" height="40" width="154"
+            data-src="https://a.slack-edge.com/96f2e65/marketing/img/logos/company/_color/rea.png"
+            data-srcset="https://a.slack-edge.com/96f2e65/marketing/img/logos/company/_color/rea.png 1x, https://a.slack-edge.com/96f2e65/marketing/img/logos/company/_color/rea@2x.png 2x"
+            src="https://a.slack-edge.com/96f2e65/marketing/img/logos/company/_color/rea.png" srcset="
+                https://a.slack-edge.com/96f2e65/marketing/img/logos/company/_color/rea.png    1x,
+                https://a.slack-edge.com/96f2e65/marketing/img/logos/company/_color/rea@2x.png 2x
+              " />
+        </div>
+        <div class="c-logo-bar__item my-4">
+          <img alt="RMIT Online" height="35" width="118"
+            data-src="https://a.slack-edge.com/f854ec/marketing/img/logos/company/_color/rmit.png"
+            data-srcset="https://a.slack-edge.com/f854ec/marketing/img/logos/company/_color/rmit.png 1x, https://a.slack-edge.com/f854ec/marketing/img/logos/company/_color/rmit@2x.png 2x"
+            src="https://a.slack-edge.com/f854ec/marketing/img/logos/company/_color/rmit.png" srcset="
+                https://a.slack-edge.com/f854ec/marketing/img/logos/company/_color/rmit.png    1x,
+                https://a.slack-edge.com/f854ec/marketing/img/logos/company/_color/rmit@2x.png 2x
+              " />
+        </div>
+        <div class="c-logo-bar__item my-4">
+          <img alt="IBM" height="35" width="90"
+            data-src="https://a.slack-edge.com/a121d33/marketing/img/digital-hq/logo-ibm.png"
+            data-srcset="https://a.slack-edge.com/a121d33/marketing/img/digital-hq/logo-ibm.png 1x, https://a.slack-edge.com/a121d33/marketing/img/digital-hq/logo-ibm@2x.png 2x"
+            src="https://a.slack-edge.com/a121d33/marketing/img/digital-hq/logo-ibm.png" srcset="
+                https://a.slack-edge.com/a121d33/marketing/img/digital-hq/logo-ibm.png    1x,
+                https://a.slack-edge.com/a121d33/marketing/img/digital-hq/logo-ibm@2x.png 2x
+              " />
+        </div>
+        <div class="c-logo-bar__item my-4">
+          <img alt="Deliveroo" height="35" width="143"
+            data-src="https://a.slack-edge.com/f854ec/marketing/img/logos/company/_color/deliveroo.png"
+            data-srcset="https://a.slack-edge.com/f854ec/marketing/img/logos/company/_color/deliveroo.png 1x, https://a.slack-edge.com/f854ec/marketing/img/logos/company/_color/deliveroo@2x.png 2x"
+            src="https://a.slack-edge.com/f854ec/marketing/img/logos/company/_color/deliveroo.png" srcset="
+                https://a.slack-edge.com/f854ec/marketing/img/logos/company/_color/deliveroo.png    1x,
+                https://a.slack-edge.com/f854ec/marketing/img/logos/company/_color/deliveroo@2x.png 2x
+              " />
+        </div>
+      </div>
+      <div class="parent-of-all-videos w-100 h-auto">
+        <!-- First video -->
+        <div class="first-video-content d-flex justify-content-evenly">
+          <video data-js-id="speed"
+            title="Using the Workday integration to quickly file an expense report in the Slack app" role="img" autoplay
+            loop="" muted="" playsinline="">
+            <source
+              src="https://a.slack-edge.com/445abcc/marketing/img/homepage/e2e-prospects/animations/webm/speed.IN.webm"
+              type="video/webm" />
+            <source
+              src="https://a.slack-edge.com/445abcc/marketing/img/homepage/e2e-prospects/animations/mp4/speed.IN.mp4"
+              type="video/mp4" />
+          </video>
+
+          <div class="video-content w-100" style="margin-left:10vw;">
+            <h1 class="fw-bold">Move faster with your tools in one place</h1>
+            <p class="fw-semibold mt-4">
+              Automate away routine tasks with the power of generative AI and
+              simplify your workflow with all your favourite apps ready to go
+              in Slack.
+            </p>
+            <a class="hover-line fs-5 fw-semibold">
+              Learn more about the Slack platform
+              <i class="ri-arrow-right-line fs-4"></i>
+            </a>
+          </div>
+        </div>
+        <!-- Second Video -->
+        <div class="first-video-content d-flex flex-row-reverse ps-5 pe-0" style="margin-top:8vw;">
+          <video data-js-id="flexibility" title="A user starting a huddle and recording a video clip with the Slack app"
+            role="img" autoplay loop="" muted="" playsinline="">
+            <source
+              src="https://a.slack-edge.com/ec3a92a/marketing/img/homepage/true-prospects/animations/webm/ia4-flexibility.IN.webm"
+              type="video/webm">
+            <source
+              src="https://a.slack-edge.com/ec3a92a/marketing/img/homepage/true-prospects/animations/mp4/ia4-flexibility.IN.mp4"
+              type="video/mp4">
+          </video>
+
+          <div class="video-content w-100" style="margin-left:8vw;">
+            <h1 class="fw-bold">Move faster with your tools in one place</h1>
+            <p class="fw-semibold mt-4">
+              In Slack, you’ve got all the flexibility to work when, where and how it’s best for you. You can easily chat, send audio and video clips, or join a huddle to talk things through live.
+            </p>
+            <a class="hover-line fs-5 fw-semibold">
+              Learn more about the Slack platform
+              <i class="ri-arrow-right-line fs-4"></i>
+
+            </a>
+          </div>
+
+        </div>
+        <!-- Third video -->
+        <div class="first-video-content d-flex justify-content-evenly mb-5" style="margin-top:8vw;">
+          <video title="A connected team discussing work in multiple channels in the Slack app" role="img"
+            data-js-id="connectedness" autoplay loop="" muted="" playsinline="">
+            <source
+              src="https://a.slack-edge.com/445abcc/marketing/img/homepage/e2e-prospects/animations/webm/connectedness.IN.webm"
+              type="video/webm">
+            <source
+              src="https://a.slack-edge.com/445abcc/marketing/img/homepage/e2e-prospects/animations/mp4/connectedness.IN.mp4"
+              type="video/mp4">
+          </video>
+
+          <div class="video-content w-100" style="margin-left:10vw;">
+            <h1 class="fw-bold">Move faster with your tools in one place</h1>
+            <p class="fw-semibold mt-4">
+              Automate away routine tasks with the power of generative AI and
+              simplify your workflow with all your favourite apps ready to go
+              in Slack.
+            </p>
+            <a class="hover-line fs-5 fw-semibold">
+              Learn more about the Slack platform
+              <i class="ri-arrow-right-line fs-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- White bg Div -->
+        <div class="bg-white h-auto w-100 text-center px-0 pb-3 mb-5">
+          <!-- Heading -->
+          <div class="main-child-1" style="padding-top:6.5vw; margin-bottom:5vw;">
+            <h1 class="fw-bold p-3" style="font-size: 3.3rem;">Teams large and small rely on Slack</h1>
+            <p class="fw-semibold" style="font-size: 1.3em;">Slack securely scales up to support collaboration at the
+              world’s biggest companies.</p>
+            <button type="button" class="btn btn-outline-light text-uppercase fw-semibold"
+              style="background:#541554; font-size:1rem; padding:1.2vw 3vw;">
+              Meet slack for entriprise
+            </button>
+            <button type="button" class="btn btn-light text-uppercase fw-semibold"
+              style="color: #541554; border:1px solid #541554 ;font-size:1rem; padding:1.2vw 3vw;">
+              Talk to sales
+            </button>
+          </div>
+          <!-- Percentages -->
+          <div class="d-flex justify-content-evenly text-start percentages" style="margin-bottom:7vw;">
+            <div class="w-25">
+              <h1 class="fw-bold" style="color:#541554; font-size:5vw;">85%</h1>
+              <p class="w-75">of users say that Slack has improved communication*</p>
+            </div>
+            <div class="w-25 px-4">
+              <h1 class="fw-bold" style="color:#541554; font-size:5vw;">86%</h1>
+              <p class="w-75">feel that their ability to work remotely has improved*</p>
+            </div>
+            <div class="w-25">
+              <h1 class="fw-bold" style="color:#541554; font-size:5vw;">88%</h1>
+              <p class="w-75">feel more connected to their teams*</p>
+            </div>
+          </div>
+          <!-- Youtube video -->
+          <div class="first-video-content d-flex justify-content-evenly">
+            <video class="video_capsule asset_height rounded-pill" autoplay="" loop=""
+              title="Video featuring a Slack customer, " muted="" playsinline="">
+              <source
+                src="https://a.slack-edge.com/1b4e2a3/marketing/img/homepage/true-prospects/customer-showcase/Vodafone_08.mp4"
+                type="video/mp4">
+            </video>
+
+            <div class="video-content w-100 ms-4 px-5 text-start">
+              <h3 class="fw-normal fst-italic pe-2">‘Many technology employees were gravitating naturally to Slack. So
+                we followed our users to what has become one of our most important tools.’</h3>
+              <p class="fw-semibold mt-4">
+              <p class="fw-semibold mb-0">Matt Beal</p>
+              Director of Technology Strategy and Architecture, Vodafone
+              </p>
+              <a class="fs-6 fw-semibold">
+                See more customer stories
+                <i class="ri-arrow-right-line fs-6 "></i>
+              </a>
+            </div>
+          </div>
+
+          <p style="font-size:1vw; margin-top:6.5vw;">* Weighted average. Based on 2,707 survey responses from weekly
+            Slack users in the US, UK, Australia and Canada with a ± 2% margin of error at 95% CI (December 2021).</p>
+        </div>
+
+        <!-- Cards Div -->
+        <div class="all-cards text-center p-0 m-0">
+          <h2 class="fw-bold mb-4">Take a deeper dive into a new way to work
+          </h2>
+
+          <div class="d-flex justify-content-evenly flex-wrap">
+            <!-- First Card -->
+            <div class="card-hover card text-start mt-2 " style="width: 19rem;">
+              <img src="/images/img1.png" class="card-img-top" style="padding:9px;" alt="...">
+              <div class="card-body" style="padding:9px;">
+                <p class="card-text mb-0">Event</p>
+                <p class="card-title fw-bold fs-4">Ready for the future of AI in Slack? </p>
+                <a class="fs-5 fw-semibold d-flex justify-content-between mt-5 text-decoration-none">
+                  Watch On demand
+                  <i class=" ri-arrow-right-line fs-4"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Second Card -->
+            <div class="card-hover card text-start mt-2 " style="width: 19rem;">
+              <img src="/images/img2.jpg" class="card-img-top" style="padding:9px;" alt="...">
+              <div class="card-body" style="padding:9px;">
+                <p class="card-text mb-0">On demand</p>
+                <p class="card-title fw-bold fs-4">Big things are launching. Relive the highlights of World Tour New
+                  York! </p>
+                <a class="fs-5 fw-semibold d-flex justify-content-between mt-3 text-decoration-none">
+                  Watch Now
+                  <i class=" ri-arrow-right-line fs-4"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Third Card -->
+            <div class=" card-hover card text-start mt-2 " style="width: 19rem;">
+              <img src="/images/img3.jpg" class="card-img-top" style="padding:9px;" alt="...">
+              <div class="card-body" style="padding:9px;">
+                <p class="card-text mb-0">Customer story</p>
+                <p class="card-title fw-bold fs-4">How OpenAI expands ChatGPT with Slack. </p>
+                <a class="fs-5 fw-semibold d-flex justify-content-between mt-5 text-decoration-none">
+                  Read more
+                  <i class=" ri-arrow-right-line fs-4"></i>
+                </a>
+              </div>
+
+
+            </div>
+
+            <!-- Fourth Card -->
+            <div class="card-hover card text-start mt-2 " style="width: 19rem;">
+              <img src="/images/img4.jpg" class="card-img-top" style="padding:9px;" alt="...">
+              <div class="card-body" style="padding:9px;">
+                <p class="card-text mb-0">Webinar</p>
+                <p class="card-title fw-bold fs-4">How OpenAI expands ChatGPT with Slack. </p>
+                <a class="fs-5 fw-semibold d-flex justify-content-between mt-5 text-decoration-none">
+                  Watch Now
+                  <i class=" ri-arrow-right-line fs-4"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Main content ended -->
+
+    <!-- Footer Started -->
+    <footer class="footer h-auto bg-white">
+      <div class="footer-bg w-100 px-5">
+        <br><br>
+        <p class="fw-bold text-center" style="font-size:3.5vw;">See all that you can accomplish with Slack</p>
+
+        <div class="btns text-center mt-5">
+          <button type="button" class="btn btn-light text-uppercase fw-semibold"
+            style="color: #541554;padding:1.5vw 4vw">
+            Try for free
+          </button>
+          <button type="button" class="btn btn-outline-light text-uppercase fw-semibold" style="padding:1.5vw 4vw">
+            Talk to sales
+          </button>
+        </div>
+      </div>
+
+      <div class="footer-content d-flex justify-content-between position-relative mb-4 flex-wrap"
+        style="padding:3vw 13vw 2vw 5vw;">
+        <svg width="65" height="65" class="c-nav--footer__svgicon c-slackhash" viewBox="0 0 54 54"
+          xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M19.712.133a5.381 5.381 0 0 0-5.376 5.387 5.381 5.381 0 0 0 5.376 5.386h5.376V5.52A5.381 5.381 0 0 0 19.712.133m0 14.365H5.376A5.381 5.381 0 0 0 0 19.884a5.381 5.381 0 0 0 5.376 5.387h14.336a5.381 5.381 0 0 0 5.376-5.387 5.381 5.381 0 0 0-5.376-5.386"
+              fill="#44BEDF"></path>
+            <path
+              d="M53.76 19.884a5.381 5.381 0 0 0-5.376-5.386 5.381 5.381 0 0 0-5.376 5.386v5.387h5.376a5.381 5.381 0 0 0 5.376-5.387m-14.336 0V5.52A5.381 5.381 0 0 0 34.048.133a5.381 5.381 0 0 0-5.376 5.387v14.364a5.381 5.381 0 0 0 5.376 5.387 5.381 5.381 0 0 0 5.376-5.387"
+              fill="#2EB67D"></path>
+            <path
+              d="M34.048 54a5.381 5.381 0 0 0 5.376-5.387 5.381 5.381 0 0 0-5.376-5.386h-5.376v5.386A5.381 5.381 0 0 0 34.048 54m0-14.365h14.336a5.381 5.381 0 0 0 5.376-5.386 5.381 5.381 0 0 0-5.376-5.387H34.048a5.381 5.381 0 0 0-5.376 5.387 5.381 5.381 0 0 0 5.376 5.386"
+              fill="#ECB22E"></path>
+            <path
+              d="M0 34.249a5.381 5.381 0 0 0 5.376 5.386 5.381 5.381 0 0 0 5.376-5.386v-5.387H5.376A5.381 5.381 0 0 0 0 34.25m14.336-.001v14.364A5.381 5.381 0 0 0 19.712 54a5.381 5.381 0 0 0 5.376-5.387V34.25a5.381 5.381 0 0 0-5.376-5.387 5.381 5.381 0 0 0-5.376 5.387"
+              fill="#E01E5A"></path>
+          </g>
+        </svg>
+
+        <!-- First line -->
+        <div class="first-line">
+          <p class="text-uppercase fw-bold">Why Slack?</p>
+          <div class="c-pointer">
+            <p>Slack vs email</p>
+            <p>Channels</p>
+            <p>Engagement</p>
+            <p>Scale</p>
+            <p>Watch demo</p>
+          </div>
+        </div>
+        <!-- Second line -->
+        <div class="second-line">
+          <p class="text-uppercase fw-bold">product</p>
+          <div class="c-pointer">
+            <p class="text-dark hover-primary">Features</p>
+            <p>Integrations</p>
+            <p>Enterprise</p>
+            <p>Solutions</p>
+          </div>
+        </div>
+        <!-- Third line -->
+        <div class="third-line">
+          <p class="text-uppercase fw-bold">Pricing</p>
+          <div class="c-pointer">
+            <p>Subscriptions</p>
+            <p>Paid vs free</p>
+          </div>
+        </div>
+        <!-- Fourth line -->
+        <div class="fourth-line">
+          <p class="text-uppercase fw-bold">resources</p>
+          <div class="c-pointer">
+            <p>Partners</p>
+            <p>Developers</p>
+            <p>Community</p>
+            <p>Apps</p>
+            <p>Blog</p>
+            <p>Help Centre</p>
+            <p>Events</p>
+          </div>
+        </div>
+        <!-- Fifth line -->
+        <div class="fifth-line">
+          <p class="text-uppercase fw-bold">company</p>
+          <div class="c-pointer">
+            <p>About us</p>
+            <p>Leadership</p>
+            <p>News</p>
+            <p>Media kit</p>
+            <p>Careers</p>
+            <p>Slack shop</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-footer container custom-container d-flex justify-content-between flex-wrap">
+        <!-- Left Elements -->
+        <div class="left-elements d-flex fw-bold">
+          <div class="mb-3 me-3">Status</div>
+          <div class="mb-3 me-3">Privacy</div>
+          <div class="mb-3 me-3">Terms</div>
+          <div class="mb-3 me-3 d-flex justify-content-between">
+            <img src="/images/tick.png" alt="right/no - Button" style="height:35px;margin-top:-3px;">
+            Your privacy choices
+          </div>
+
+          </span>
+          <div class="mb-3 me-3">Cookie preferences</div>
+          <div class="mb-3 me-3">Contact us</div>
+          <div class="mb-3 dropdown">
+            <a class="text-decoration-none text-dark dropdown-toggle" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Change region
+            </a>
+
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right Elements -->
+        <div class="right-elements d-flex">
+          <div class="mb-3 fw-bold me-3" style="color:#1264a3;">
+            <img src="/images/download.svg" style="margin-top:-4.5px;margin-right:4px;">Download Slack
+          </div>
+          <div class="fs-4 d-flex" style="margin-top:-7px;">
+            <div class="mb-3 me-3 icons"><i class="ri-twitter-fill"></i></div>
+            <div class="mb-3 me-3 icons"><i class="ri-facebook-box-fill"></i></div>
+            <div class="mb-3 me-3 icons"><i class="ri-youtube-fill"></i></div>
+            <div class="mb-3 icons"><i class="ri-linkedin-box-fill"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright" style="padding:1vw 5vw 2vw 5vw;font-size:13px;">
+        ©2023 Slack Technologies, LLC, a Salesforce company. All rights reserved. Various trademarks held by their
+        respective owners.
+      </div>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+    <script src="home.js"></script>
+</body>
+
+</html>
